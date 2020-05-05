@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.crandall_meng_final_project_cecs_453">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".View.EditProfileActivity"></activity>
+        <activity android:name=".View.ChangePasswordActivity" />
+        <activity android:name=".View.AboutActivity" />
+        <activity android:name=".View.HelpActivity" />
+        <activity android:name=".View.LandingSettingsFragment" />
+        <activity android:name=".View.LandingMenuFragment" />
+        <activity android:name=".View.LandingActivity" />
+        <activity android:name=".View.OcrCameraFragment"/>
+        <activity android:name=".View.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".View.SignupActivity" />
+        <activity android:name=".View.LoginActivity" />
+        <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="ocr"></meta-data>
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
+    </application>
+
+</manifest>

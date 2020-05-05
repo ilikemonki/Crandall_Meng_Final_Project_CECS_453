@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">Final Project</string>
+    <string name="name_field_text">Username</string>
+    <string name="password_field_text">Password</string>
+    <string name="retype_password_field_text">Retype Password</string>
+    <string name="signup_button_text">Signup</string>
+    <string name="login_button_text">Login</string>
+    <string name="email_field_text">Email</string>
+    <string name="phone_field_text">Phone</string>
+    <string name="age_field">Age</string>
+
+    <string name='database_name'>DatabaseName</string>
+
+    <string name='splash_description'>splash screen</string>
+    <integer name="splash_duration_miliseconds">2500</integer>
+
+    <string name='menu_title'>Menu</string>
+    <string name='settings_title'>Settings</string>
+
+    <string name='settings_change_password_option_text'>Change Password</string>
+    <string name='settings_profile_option_text'>Edit Profile</string>
+    <string name='settings_help_option_text'>Help</string>
+    <string name='settings_about_option_text'>About</string>
+    <string name='settings_logout_option_text'>Logout</string>
+
+    <string name='help_body'>
+        HELP:\n
+        \n
+        \n
+        I don\'t actually know what our project entails yet, so I\'m just following the Final Project Guideline.\n
+        \n
+        \n
+        STUB: add a help section.\n
+    </string>
+    <string name='about_body'>
+        About:\n
+        \n
+        \n
+        This is Crandall\'s and Meng\'s final CECS453 project for CSU LongBeach.\n
+        \n
+        Our goal with this project is to maintain a simple code base while providing all the core features listed in the Final Project Guideline.\n
+        \n
+        STUB: add what this project is about.\n
+    </string>
+
+    <string name='change_password_current_hint'>Current Password</string>
+    <string name='change_password_new_hint'>New Password</string>
+    <string name='change_password_button_text'>Confirm</string>
+    <string name='update_success_toast'>Password Updated Successfully.</string>
+
+    <string name='edit_profile_name'>Username: </string>
+    <string name='edit_profile_password'>Password</string>
+    <string name='edit_profile_email'>Email: </string>
+    <string name='edit_profile_phone'>Phone: </string>
+    <string name='edit_profile_age'>Age: </string>
+    <string name='edit_profile_button_text'>Update</string>
+    <string name='edit_success_toast'>Profile Updated Successfully.</string>
+    <string name='image_view'>Image View.</string>
+
+</resources>
