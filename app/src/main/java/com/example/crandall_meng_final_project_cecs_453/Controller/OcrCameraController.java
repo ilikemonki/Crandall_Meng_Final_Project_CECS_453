@@ -1,5 +1,6 @@
 package com.example.crandall_meng_final_project_cecs_453.Controller;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,15 +15,20 @@ import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
+//Ocr (Optical Character Recognition) - Conversion of images to text.
 public class OcrCameraController {
     private OcrCameraModel cameraModel;
 
+    //Constructor
     public OcrCameraController(Context appContext) {
         cameraModel = new OcrCameraModel(appContext);
     }
 
+    //Set up the text recognition and camera settings for Ocr
     public void setupOcrCamera() {
         setTextRecognizer(new TextRecognizer.Builder(getContext()).build());
         if (!getTextRecognizer().isOperational()) {
@@ -37,18 +43,19 @@ public class OcrCameraController {
         }
     }
 
+    //Takes a picture and stops camera.
     public void takePicture() {
         getCameraSource().takePicture(null, new CameraSource.PictureCallback() {
             @Override
             public void onPictureTaken(byte[] bytes) {
                 getCameraSource().stop();
                 setImageBytes(bytes);
-                //showPopup();
 
             }
         });
     }
 
+    //Starts the camera
     public void startCamera(SurfaceView surfaceView) {
         try {
             getCameraSource().start(surfaceView.getHolder());
@@ -57,23 +64,24 @@ public class OcrCameraController {
         }
     }
 
-
+    //Rotate image and call save function
     public void saveImage(byte[] bytes) {
         setBitmapImage(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
         //Rotate image 90 degrees
         Matrix matrix = new Matrix();
         matrix.postRotate(90);
         setBitmapImage(Bitmap.createBitmap(getBitmapImage(), 0, 0, getBitmapImage().getWidth(), getBitmapImage().getHeight(), matrix, true));
-        setResultUri(getImageUri(getBitmapImage()));
+        setResultUri(getImageUriFromBitmap(getBitmapImage()));
     }
 
-    //Convert Bitmap to Uri and saves image to user's external storage.
-    public Uri getImageUri(Bitmap bitmap) {
+    //Convert Bitmap to Uri and save image to external storage.
+    public Uri getImageUriFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), bitmap, "Title", null);
         return Uri.parse(path);
     }
+
 
     public Bitmap getBitmapImage() {
         return cameraModel.getBitmapImage();

@@ -23,6 +23,7 @@ import com.example.crandall_meng_final_project_cecs_453.R;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 public class OcrCameraFragment extends Fragment {
     private SurfaceView mCameraView;

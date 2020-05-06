@@ -12,8 +12,8 @@ public class OcrCameraModel {
     private Bitmap bitmapImage = null;
     private Uri resultUri;
     private byte[] imageBytes = null;
-    final int RequestCameraPermissionID = 1001;
-    final int RequestWriteExternalStorageID = 1002;
+    final private int RequestCameraPermissionID = 1001;
+    final private int RequestWriteExternalStorageID = 1002;
     private Context  context;
     private TextRecognizer textRecognizer;
 

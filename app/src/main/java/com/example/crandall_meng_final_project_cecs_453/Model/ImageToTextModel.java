@@ -7,6 +7,8 @@ import android.net.Uri;
 
 import androidx.fragment.app.Fragment;
 
+//Image to Text Model
+//Also implements cropping images
 public class ImageToTextModel {
     private BitmapDrawable bitmapDrawable;
     private Bitmap bitmap;
