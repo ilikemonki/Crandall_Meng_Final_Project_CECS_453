@@ -2,34 +2,46 @@ package com.example.crandall_meng_final_project_cecs_453.Controller;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 
 import com.example.crandall_meng_final_project_cecs_453.Model.UserData;
 
-import org.w3c.dom.Text;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-public class Controller {
+public class LoginController {
     public static final int MAX_AGE_FOR_USER = 130;
     public static final int MIN_AGE_FOR_USER = 5;
     public static final int MAX_CHARACTERS_IN_INPUT = 50;
     public static final int MIN_PASSWORD_LENGTH = 8;
     public static final int MIN_PHONE_LENGTH = 7;
 
-    protected static Controller mController = new Controller();
+    protected static LoginController mController = new LoginController();
 
     protected boolean mLoggedIn = false;
     protected UserData mUserData = null;
 
-    public static Controller getInstance() { return mController; }
+    public static synchronized LoginController getInstance() { return mController; }
 
-    private Controller() {}
+    private LoginController() {}
 
-    public String attemptSignup(Context ctx, String username, String password, String retypedPassword, String email, String phone, String age) {
+    public boolean checkForDefaultLogin(Context ctx) {
         mUserData = null;
         mLoggedIn = false;
+        UserData data = new UserData();
+
+        if(UserData.checkForDefaultLogin(ctx, data)) {
+            mUserData = data;
+            mLoggedIn = true;
+
+            Log.e("Default Login", "Success");
+            return true;
+        }
+
+        Log.e("Default Login", "Failure");
+        return false;
+    }
+
+    public String attemptSignup(Context ctx, String username, String password, String retypedPassword, String email, String phone, String age) {
+        logOut(ctx);
 
         if(ctx == null || username == null || password == null || retypedPassword == null || email == null || phone == null || age == null) {
             return "Signup attempted with null parameters.";
@@ -53,7 +65,7 @@ public class Controller {
 
         if(Patterns.EMAIL_ADDRESS.matcher(email).matches() == false) { return "Email must be valid."; }
 
-        if(!validatePhoneNumber(phone)) { return "Phone number must be valid."; }
+        if(validatePhoneNumber(phone) == false) { return "Phone number must be valid."; }
 
         try {
             Integer numericAge = Integer.parseInt(age);
@@ -66,7 +78,9 @@ public class Controller {
         return UserData.signupUser(ctx, username, password, email, phone, age);
     }
 
-    public String attemptLogin(Context ctx, String username, String password) {
+    public String attemptLogin(Context ctx, String username, String password, boolean rememberMe) {
+        logOut(ctx);
+
         UserData data = new UserData();
 
         if(ctx == null || username == null || password == null) {
@@ -80,22 +94,26 @@ public class Controller {
         if(password.length() > MAX_CHARACTERS_IN_INPUT) { return "Password is too long (MAX of " + MAX_CHARACTERS_IN_INPUT +" Characters)."; }
 
         String err = UserData.validateUser(data, ctx, username, password);
+        if(err != null) { return err; }
 
-        mLoggedIn = err == null;
-
-        if(mLoggedIn) {
-            mUserData = data;
-        }
-        else {
-            mUserData = null;
+        if(rememberMe) {
+            err = UserData.setDefaultLogin(ctx, username);
+            if(err != null) { return err; }
         }
 
+        mUserData = data;
+        mLoggedIn = true;
         return err;
     }
 
-    public void logOut() {
+    public void logOut(Context ctx) {
         mLoggedIn = false;
         mUserData = null;
+
+        {
+            String backendProblem = UserData.clearDefaultLogin(ctx);
+            if(backendProblem != null) { Log.e("Failed to clear default login", backendProblem); }
+        }
     }
 
     public String updatePassword(Context ctx, String oldPass, String newPass) {
@@ -165,7 +183,7 @@ public class Controller {
         return mUserData.getPhone();
     }
     public int getAge() {
-        if(mUserData == null) return 0;
+        if(mUserData == null) return -1;
         return mUserData.getAge();
     }
 }

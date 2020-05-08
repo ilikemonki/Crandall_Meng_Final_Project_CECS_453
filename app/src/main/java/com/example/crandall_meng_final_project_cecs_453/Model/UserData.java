@@ -137,4 +137,56 @@ public class UserData {
 
         return false;
     }
+
+    public static String setDefaultLogin(Context ctx, String username) {
+        try (Database database = new Database(ctx)) {
+            String query = "INSERT INTO default_user(username) VALUES('" + username + "')";
+            database.db.execSQL(query);
+            return null;
+        } catch (Exception e) {
+            return "Failed to set default login.";
+        }
+    }
+
+    public static String clearDefaultLogin(Context ctx) {
+        try (Database database = new Database(ctx)) {
+            String query = "DELETE FROM default_user WHERE 1=1";
+            database.db.execSQL(query);
+            return null;
+        } catch (Exception e) {
+            return "Failed to clear default login.";
+        }
+    }
+
+    public static boolean checkForDefaultLogin(Context ctx, UserData data) {
+        try(Database database = new Database(ctx)) {
+            Cursor cursor = database.db.query("default_user",
+                    new String[] {"username"},
+                    null,
+                    new String[] {},
+                    null, null, null, null);
+
+            if(!cursor.moveToFirst()) { Log.e("???", "????"); return false; }
+            String defaultName = cursor.getString(cursor.getColumnIndex("username"));
+
+            cursor = database.db.query("login",
+                    new String[] {"username", "password", "email", "phone", "age"},
+                    "username=?",
+                    new String[] {defaultName},
+                    null, null, null, null);
+
+            if(!cursor.moveToFirst()) { Log.e("2???", "2????"); return false; }
+
+            data.mUsername = cursor.getString(cursor.getColumnIndex("username"));
+            data.mPassword = cursor.getString(cursor.getColumnIndex("password"));
+            data.mEmail = cursor.getString(cursor.getColumnIndex("email"));
+            data.mPhone = cursor.getString(cursor.getColumnIndex("phone"));
+            data.mAge = cursor.getInt(cursor.getColumnIndex("age"));
+            return true;
+
+        } catch(Exception e) {
+            Log.e("Default Login Failure: ", e.toString());
+            return false;
+        }
+    }
 }

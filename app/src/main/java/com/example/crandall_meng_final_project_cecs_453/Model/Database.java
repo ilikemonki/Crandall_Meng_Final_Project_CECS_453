@@ -21,9 +21,12 @@ public class Database implements AutoCloseable {
             "phone TEXT NOT null, " +
             "age INTEGER)";
 
+    protected static final String ENSURE_DEFAULT_USER_TABLE = "create TABLE IF NOT EXISTS default_user(username TEXT NOT NULL)";
+
     public Database(Context ctx) {
         db = ctx.openOrCreateDatabase(ctx.getResources().getString(R.string.database_name), Context.MODE_PRIVATE, null);
         db.execSQL(ENSURE_USER_TABLE);
+        db.execSQL(ENSURE_DEFAULT_USER_TABLE);
     }
 
     public void close() {

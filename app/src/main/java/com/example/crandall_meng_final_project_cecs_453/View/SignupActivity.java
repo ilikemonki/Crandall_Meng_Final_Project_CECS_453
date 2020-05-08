@@ -4,16 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.crandall_meng_final_project_cecs_453.Controller.Controller;
+import com.example.crandall_meng_final_project_cecs_453.Controller.LoginController;
 import com.example.crandall_meng_final_project_cecs_453.R;
 
 public class SignupActivity extends AppCompatActivity {
-    protected Controller mController;
+    protected LoginController mController;
     protected EditText mUsername, mPassword, mRetypePassword, mEmail, mPhone, mAge;
     protected Button mSignupButton;
 
@@ -22,7 +21,7 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        mController = Controller.getInstance();
+        mController = LoginController.getInstance();
         mUsername = findViewById(R.id.name_field);
         mPassword = findViewById(R.id.password_field);
         mRetypePassword = findViewById(R.id.retype_password_field);

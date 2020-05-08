@@ -7,11 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.crandall_meng_final_project_cecs_453.Controller.Controller;
+import com.example.crandall_meng_final_project_cecs_453.Controller.LoginController;
 import com.example.crandall_meng_final_project_cecs_453.R;
 
 public class ChangePasswordActivity extends AppCompatActivity {
-    protected Controller mController;
+    protected LoginController mController;
 
     protected EditText mOldPass, mNewPass;
 
@@ -20,7 +20,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
-        mController = Controller.getInstance();
+        mController = LoginController.getInstance();
 
         mOldPass = findViewById(R.id.current_field);
         mNewPass = findViewById(R.id.new_field);
