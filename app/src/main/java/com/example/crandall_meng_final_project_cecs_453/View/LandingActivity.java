@@ -1,6 +1,5 @@
 package com.example.crandall_meng_final_project_cecs_453.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -11,7 +10,6 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.example.crandall_meng_final_project_cecs_453.Controller.Controller;
 import com.example.crandall_meng_final_project_cecs_453.R;
 
 public class LandingActivity extends FragmentActivity {

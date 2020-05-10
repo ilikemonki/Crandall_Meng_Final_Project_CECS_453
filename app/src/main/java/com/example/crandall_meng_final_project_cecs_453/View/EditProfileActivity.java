@@ -7,11 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.crandall_meng_final_project_cecs_453.Controller.Controller;
+import com.example.crandall_meng_final_project_cecs_453.Controller.LoginController;
 import com.example.crandall_meng_final_project_cecs_453.R;
 
 public class EditProfileActivity extends AppCompatActivity {
-    protected Controller mController;
+    protected LoginController mController;
 
     EditText mUsername, mPassword, mEmail, mPhone, mAge;
     Button mButton;
@@ -21,7 +21,7 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        mController = Controller.getInstance();
+        mController = LoginController.getInstance();
 
 
         mUsername = findViewById(R.id.edit_profile_username);

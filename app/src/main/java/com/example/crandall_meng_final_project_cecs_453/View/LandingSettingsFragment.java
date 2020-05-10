@@ -1,6 +1,5 @@
 package com.example.crandall_meng_final_project_cecs_453.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
@@ -10,13 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.crandall_meng_final_project_cecs_453.Controller.Controller;
+import com.example.crandall_meng_final_project_cecs_453.Controller.LoginController;
 import com.example.crandall_meng_final_project_cecs_453.R;
 
 public class LandingSettingsFragment extends Fragment {
     protected ViewGroup mView;
 
-    protected Controller mController;
+    protected LoginController mController;
 
     protected Button mChangePassword;
     protected Button mEditProfile;
@@ -28,7 +27,7 @@ public class LandingSettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = (ViewGroup) inflater.inflate(R.layout.activity_landing_settings_fragment, container, false);
 
-        mController = Controller.getInstance();
+        mController = LoginController.getInstance();
 
         mChangePassword = mView.findViewById(R.id.change_password_button);
         mEditProfile = mView.findViewById(R.id.edit_profile_button);
@@ -42,7 +41,7 @@ public class LandingSettingsFragment extends Fragment {
         mAbout.setOnClickListener((view) -> startActivity(new Intent(getActivity(), AboutActivity.class)));
 
         mLogOut.setOnClickListener((view) -> {
-            mController.logOut();
+            mController.logOut(getActivity());
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);

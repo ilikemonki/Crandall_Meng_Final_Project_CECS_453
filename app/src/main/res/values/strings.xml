@@ -12,7 +12,7 @@
     <string name='database_name'>DatabaseName</string>
 
     <string name='splash_description'>splash screen</string>
-    <integer name="splash_duration_miliseconds">2500</integer>
+    <integer name="splash_duration_miliseconds">2300</integer>
 
     <string name='menu_title'>Menu</string>
     <string name='settings_title'>Settings</string>
@@ -56,5 +56,7 @@
     <string name='edit_profile_button_text'>Update</string>
     <string name='edit_success_toast'>Profile Updated Successfully.</string>
     <string name='image_view'>Image View.</string>
+
+    <string name='remember_me_box_text'>Remember Me</string>
 
 </resources>
