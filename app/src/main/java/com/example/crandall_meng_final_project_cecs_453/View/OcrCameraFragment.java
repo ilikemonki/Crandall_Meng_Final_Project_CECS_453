@@ -2,6 +2,7 @@ package com.example.crandall_meng_final_project_cecs_453.View;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -20,6 +21,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.crandall_meng_final_project_cecs_453.Controller.OcrCameraController;
 import com.example.crandall_meng_final_project_cecs_453.R;
+import com.google.android.gms.common.images.Size;
+import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 import java.io.IOException;
@@ -56,7 +59,7 @@ public class OcrCameraFragment extends Fragment {
         });
         //Popup Yes Button
         mYesButton.setOnClickListener((view) -> {
-            if(cameraController.getImageBytes() != null) {
+            if (cameraController.getImageBytes() != null) {
                 Toast.makeText(getContext(), "Saving Image", Toast.LENGTH_SHORT).show();
 
                 cameraController.saveImage(cameraController.getImageBytes());
@@ -72,6 +75,7 @@ public class OcrCameraFragment extends Fragment {
         //Setup camera with text recognition
         cameraController.setupOcrCamera();
 
+        //set the surfaceview with camerasource
         mCameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder surfaceHolder) {
@@ -93,12 +97,14 @@ public class OcrCameraFragment extends Fragment {
             public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
             }
 
+
             @Override
             public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
                 cameraController.getCameraSource().stop();
             }
         });
 
+        //when Text Recognizer get detection, get the text and print them to screen
         cameraController.getTextRecognizer().setProcessor(new Detector.Processor<TextBlock>() {
             @Override
             public void release() {
@@ -108,14 +114,12 @@ public class OcrCameraFragment extends Fragment {
             @Override
             public void receiveDetections(Detector.Detections<TextBlock> detections) {
                 final SparseArray<TextBlock> textBlockSparseArray = detections.getDetectedItems();
-                if(textBlockSparseArray.size() != 0)
-                {
+                if (textBlockSparseArray.size() != 0) {
                     mTextView.post(new Runnable() {
                         @Override
                         public void run() {
                             StringBuilder stringBuilder = new StringBuilder();
-                            for(int i = 0; i < textBlockSparseArray.size(); i++)
-                            {
+                            for (int i = 0; i < textBlockSparseArray.size(); i++) {
                                 TextBlock textBlock = textBlockSparseArray.valueAt(i);
                                 stringBuilder.append(textBlock.getValue());
                                 stringBuilder.append("\n");
@@ -126,6 +130,7 @@ public class OcrCameraFragment extends Fragment {
                 }
             }
         });
+
         return rootView;
     }
 
@@ -155,6 +160,7 @@ public class OcrCameraFragment extends Fragment {
         mNoButton.setClickable(false);
         mSaveTextView.setVisibility(View.INVISIBLE);
     }
+
     //Show saved popup
     public void showPopup() {
         mYesButton.setVisibility(View.VISIBLE);
@@ -175,4 +181,5 @@ public class OcrCameraFragment extends Fragment {
         transaction.replace(R.id.landing_menu_container, fragobj);
         transaction.commit();
     }
+
 }

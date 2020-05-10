@@ -37,7 +37,7 @@ public class OcrCameraController {
             cameraModel.setCameraSource(new CameraSource.Builder(getContext(), getTextRecognizer())
                     .setFacing(CameraSource.CAMERA_FACING_BACK)
                     .setRequestedPreviewSize(1280, 1024)
-                    .setRequestedFps(2.0f)
+                    .setRequestedFps(30.0f)
                     .setAutoFocusEnabled(true)
                     .build());
         }
@@ -54,6 +54,7 @@ public class OcrCameraController {
             }
         });
     }
+
 
     //Starts the camera
     public void startCamera(SurfaceView surfaceView) {

@@ -47,14 +47,14 @@ public class LoginActivity extends AppCompatActivity {
         mLoginButton = findViewById(R.id.login_button);
         mRememberMe = findViewById(R.id.remember_checkbox);
 
-        /*
+
         //FOR DEBUGGING PURPOSES ONLY, DELETE FROM HERE
         mController.attemptSignup(this, "p", "pppppppp",
                 "pppppppp", "p@y.com", "1231231234", "30");
         mUsername.setText("p");
         mPassword.setText("pppppppp");
         //TO HERE
-        */
+
 
         mSignupButton.setOnClickListener((view) -> {
             startActivity(new Intent(this, SignupActivity.class));
