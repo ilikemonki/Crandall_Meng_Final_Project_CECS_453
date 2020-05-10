@@ -17,9 +17,12 @@
         <activity android:name=".View.ChangePasswordActivity" />
         <activity android:name=".View.AboutActivity" />
         <activity android:name=".View.HelpActivity" />
-        <activity android:name=".View.LandingSettingsFragment" />
-        <activity android:name=".View.LandingMenuFragment" />
-        <activity android:name=".View.LandingActivity" />
+        <activity android:name=".View.LandingSettingsFragment"/>
+        <activity android:name=".View.LandingMenuFragment"/>
+        <activity android:name=".View.MainOcrFragment" />
+        <activity android:name=".View.LandingActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity android:name=".View.OcrCameraFragment"/>
         <activity android:name=".View.SplashActivity">
             <intent-filter>

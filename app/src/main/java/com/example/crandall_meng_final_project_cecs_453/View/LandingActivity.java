@@ -8,6 +8,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import com.example.crandall_meng_final_project_cecs_453.R;
