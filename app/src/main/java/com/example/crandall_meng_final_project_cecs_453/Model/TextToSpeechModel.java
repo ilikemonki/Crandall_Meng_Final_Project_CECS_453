@@ -6,10 +6,12 @@ import android.speech.tts.TextToSpeech.OnInitListener;
 
 import java.util.Locale;
 
+// Text to speech model
 public class TextToSpeechModel {
     private TextToSpeech textToSpeech;
     private Context appContext;
 
+    //Setup text to speech
     public TextToSpeechModel(final Context ctx) {
         this.appContext = ctx;
         textToSpeech = new TextToSpeech(appContext, new OnInitListener() {
@@ -21,6 +23,8 @@ public class TextToSpeechModel {
             }
         });
     }
+
+    //Getters and setters
     public TextToSpeech getTextToSpeech() {
         return textToSpeech;
     }

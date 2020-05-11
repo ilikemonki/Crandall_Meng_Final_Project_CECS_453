@@ -7,20 +7,24 @@ import android.net.Uri;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.text.TextRecognizer;
 
+// Real-time camera scanning model.
 public class OcrCameraModel {
     private CameraSource cameraSource;
     private Bitmap bitmapImage = null;
     private Uri resultUri;
     private byte[] imageBytes = null;
-    final private int RequestCameraPermissionID = 1001;
-    final private int RequestWriteExternalStorageID = 1002;
     private Context  context;
     private TextRecognizer textRecognizer;
+    // Get permission id
+    final private int RequestCameraPermissionID = 1001;
+    final private int RequestWriteExternalStorageID = 1002;
 
+    // Constructor
     public OcrCameraModel(final Context ctx) {
         this.context = ctx;
     }
 
+    //Getters and setters
     public CameraSource getCameraSource() {
         return cameraSource;
     }

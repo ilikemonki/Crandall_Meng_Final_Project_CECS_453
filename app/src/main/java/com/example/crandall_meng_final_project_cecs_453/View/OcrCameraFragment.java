@@ -21,13 +21,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.crandall_meng_final_project_cecs_453.Controller.OcrCameraController;
 import com.example.crandall_meng_final_project_cecs_453.R;
-import com.google.android.gms.common.images.Size;
-import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
+// Real-time camera scanning fragment.
+// Controls the camera, prints text to screen, captures image, saves image, and send image back to OcrMainFragment.
 public class OcrCameraFragment extends Fragment {
     private SurfaceView mCameraView;
     private TextView mTextView;
@@ -75,7 +74,7 @@ public class OcrCameraFragment extends Fragment {
         //Setup camera with text recognition
         cameraController.setupOcrCamera();
 
-        //set the surfaceview with camerasource
+        //set the surfaceview with camerasource and check for permission
         mCameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder surfaceHolder) {
@@ -104,7 +103,7 @@ public class OcrCameraFragment extends Fragment {
             }
         });
 
-        //when Text Recognizer get detection, get the text and print them to screen
+        //when Text Recognizer gets detection, get the text and print them to screen
         cameraController.getTextRecognizer().setProcessor(new Detector.Processor<TextBlock>() {
             @Override
             public void release() {

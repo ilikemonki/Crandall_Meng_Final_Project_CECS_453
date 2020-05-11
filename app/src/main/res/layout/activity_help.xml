@@ -7,13 +7,70 @@
     android:orientation="vertical"
     tools:context=".View.AboutActivity">
 
-    <TextView
-        android:id="@+id/textView3"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5sp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:text="@string/help_body"
-        android:textSize="24sp" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="94dp"
+                android:layout_margin="5sp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="@string/help_body"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/help_image_source_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_image"
+                android:drawablePadding="20dp"
+                android:padding="8dp"
+                android:text="@string/help_image_source"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/help_ocr_camera_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_camera"
+                android:drawablePadding="20dp"
+                android:padding="8dp"
+                android:text="@string/help_ocr_camera"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/help_save_button_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_save_image"
+                android:drawablePadding="20dp"
+                android:padding="8dp"
+                android:text="@string/help_save_button"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/help_text_to_speech_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_speaker_play"
+                android:drawablePadding="20dp"
+                android:padding="8dp"
+                android:text="@string/help_text_to_speech"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </ScrollView>
+
 </FrameLayout>

@@ -1,6 +1,5 @@
 package com.example.crandall_meng_final_project_cecs_453.Controller;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,11 +14,10 @@ import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
-//Ocr (Optical Character Recognition) - Conversion of images to text.
+// Ocr (Optical Character Recognition) - Conversion of images to text.
+// Real-time camera scanning with text recognition.
 public class OcrCameraController {
     private OcrCameraModel cameraModel;
 
@@ -84,6 +82,7 @@ public class OcrCameraController {
     }
 
 
+    //Getters and setters
     public Bitmap getBitmapImage() {
         return cameraModel.getBitmapImage();
     }

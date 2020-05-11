@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.crandall_meng_final_project_cecs_453.Model.ImageToTextModel;
-import com.example.crandall_meng_final_project_cecs_453.R;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
@@ -22,6 +21,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.ByteArrayOutputStream;
 
+// Image to text controller. Responsible for getting an image, cropping it, saving it, and setting it to the imageview.
 public class ImageToTextController {
     private ImageToTextModel ittModel;
 

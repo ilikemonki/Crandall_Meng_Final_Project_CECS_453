@@ -8,7 +8,7 @@ import android.net.Uri;
 import androidx.fragment.app.Fragment;
 
 //Image to Text Model
-//Also implements cropping images
+//Implements cropping images
 public class ImageToTextModel {
     private BitmapDrawable bitmapDrawable;
     private Bitmap bitmap;
@@ -16,11 +16,13 @@ public class ImageToTextModel {
     private Context appContext;
     private Fragment appFragment;
 
+    // Constructor
     public ImageToTextModel(final Context ctx, final Fragment fragment) {
         this.appContext = ctx;
         this.appFragment = fragment;
     }
 
+    //Getters and setters
     public Context getAppContext() {
         return appContext;
     }

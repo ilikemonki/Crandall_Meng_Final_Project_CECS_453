@@ -23,24 +23,20 @@
     <string name='settings_about_option_text'>About</string>
     <string name='settings_logout_option_text'>Logout</string>
 
-    <string name='help_body'>
-        HELP:\n
-        \n
-        \n
-        I don\'t actually know what our project entails yet, so I\'m just following the Final Project Guideline.\n
-        \n
-        \n
-        STUB: add a help section.\n
-    </string>
+    <string name='help_body'>HELP:</string>
+    <string name='help_image_source'>Pick an image.</string>
+    <string name='help_ocr_camera'>Real-time camera text recognition scanning.</string>
+    <string name='help_save_button'>Save current image to external storage.</string>
+    <string name='help_text_to_speech'>Press to play text to speech. Press again to stop.</string>
+
     <string name='about_body'>
         About:\n
         \n
-        \n
-        This is Crandall\'s and Meng\'s final CECS453 project for CSU LongBeach.\n
+        This is Crandall\'s and Meng\'s final CECS 453 project for CSU Long Beach Spring 2020.\n
         \n
         Our goal with this project is to maintain a simple code base while providing all the core features listed in the Final Project Guideline.\n
         \n
-        For more information about Image Reader see the help page.\n
+        Image Reader is a image to text, text to speech app with no ads using Google Vision API.\n
     </string>
 
     <string name='change_password_current_hint'>Current Password</string>

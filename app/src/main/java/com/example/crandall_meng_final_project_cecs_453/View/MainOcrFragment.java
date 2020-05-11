@@ -26,6 +26,8 @@ import com.theartofdev.edmodo.cropper.CropImage;
 
 import static android.app.Activity.RESULT_OK;
 
+// Main page after login.
+// Shows image, text from image, buttons for images, save image, and text to speech button.
 public class MainOcrFragment extends Fragment {
     private ImageView mImageView;
     private TextView mShowText;
@@ -107,7 +109,7 @@ public class MainOcrFragment extends Fragment {
             {
                 if( keyCode == KeyEvent.KEYCODE_BACK )
                 {
-                    Toast.makeText(getContext(), "Cannot go back.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Please logout to exit.", Toast.LENGTH_SHORT).show();
                     return true;
                 }
                 return false;
