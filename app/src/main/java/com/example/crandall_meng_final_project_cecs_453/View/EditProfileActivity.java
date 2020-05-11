@@ -10,6 +10,9 @@ import android.widget.Toast;
 import com.example.crandall_meng_final_project_cecs_453.Controller.LoginController;
 import com.example.crandall_meng_final_project_cecs_453.R;
 
+/*
+    Displays the profile change settings.
+ */
 public class EditProfileActivity extends AppCompatActivity {
     protected LoginController mController;
 
@@ -22,7 +25,6 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         mController = LoginController.getInstance();
-
 
         mUsername = findViewById(R.id.edit_profile_username);
         mPassword = findViewById(R.id.edit_profile_password);

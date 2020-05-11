@@ -10,6 +10,9 @@ import android.widget.Toast;
 import com.example.crandall_meng_final_project_cecs_453.Controller.LoginController;
 import com.example.crandall_meng_final_project_cecs_453.R;
 
+/*
+    Displays the password change settings.
+ */
 public class ChangePasswordActivity extends AppCompatActivity {
     protected LoginController mController;
 

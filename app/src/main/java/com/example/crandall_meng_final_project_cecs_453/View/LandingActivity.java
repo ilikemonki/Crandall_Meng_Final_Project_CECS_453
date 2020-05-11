@@ -13,6 +13,9 @@ import android.os.Bundle;
 
 import com.example.crandall_meng_final_project_cecs_453.R;
 
+/*
+    First activity displayed after login. Contains a slider with menu options, and settings options.
+ */
 public class LandingActivity extends FragmentActivity {
     protected ViewPager mViewPager;
     protected PagerAdapter mPagerAdapter;
@@ -27,6 +30,8 @@ public class LandingActivity extends FragmentActivity {
         mViewPager.setAdapter(mPagerAdapter);
     }
 
+    // This allows the back button to swap back to the menu from the settings page, rather than
+    // defaulting to return to the login page.
     @Override
     public void onBackPressed() {
         int currentItem = mViewPager.getCurrentItem();
@@ -39,6 +44,7 @@ public class LandingActivity extends FragmentActivity {
         }
     }
 
+    // Data adapter for the sliding fragments, has Menu and Settings fragments.
     private class LandingPagerAdapter extends FragmentStatePagerAdapter {
         protected static final int NUMBER_PAGES = 2;
 

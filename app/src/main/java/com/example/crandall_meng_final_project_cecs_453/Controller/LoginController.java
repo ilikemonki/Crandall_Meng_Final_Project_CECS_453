@@ -7,22 +7,33 @@ import android.util.Patterns;
 
 import com.example.crandall_meng_final_project_cecs_453.Model.UserData;
 
+/*
+    LoginController has the responsibility of managing the login state and user data.
+    It also acts as the validation layer before allowing access to the unvalidated backend models.
+ */
 public class LoginController {
+    // Constants for the validation layer to use
     public static final int MAX_AGE_FOR_USER = 130;
     public static final int MIN_AGE_FOR_USER = 5;
     public static final int MAX_CHARACTERS_IN_INPUT = 50;
     public static final int MIN_PASSWORD_LENGTH = 8;
     public static final int MIN_PHONE_LENGTH = 7;
 
+    // Singleton pattern controller object
     protected static LoginController mController = new LoginController();
 
+    // State for the controller object
     protected boolean mLoggedIn = false;
     protected UserData mUserData = null;
 
+    // Singleton pattern accessor method
     public static synchronized LoginController getInstance() { return mController; }
 
+    // Private constructor to disallow mistaken arbitrary Controller creation
     private LoginController() {}
 
+    // Called to log into the default account stored in the database, returns true if such
+    // an account was found.
     public boolean checkForDefaultLogin(Context ctx) {
         mUserData = null;
         mLoggedIn = false;
@@ -32,14 +43,15 @@ public class LoginController {
             mUserData = data;
             mLoggedIn = true;
 
-            Log.e("Default Login", "Success");
             return true;
         }
 
-        Log.e("Default Login", "Failure");
         return false;
     }
 
+    // Attempts to sign up a new user account after validation, does NOT log into that account.
+    // Returns null if the sign up was successful, otherwise it returns a String with an
+    // appropriate error message.
     public String attemptSignup(Context ctx, String username, String password, String retypedPassword, String email, String phone, String age) {
         logOut(ctx);
 
@@ -78,6 +90,9 @@ public class LoginController {
         return UserData.signupUser(ctx, username, password, email, phone, age);
     }
 
+    // Attempts to log into an account after validation, if the user is already logged in it logs
+    // then out first. If successful it returns null, otherwise it returns an appropriate
+    // error String.
     public String attemptLogin(Context ctx, String username, String password, boolean rememberMe) {
         logOut(ctx);
 
@@ -106,6 +121,7 @@ public class LoginController {
         return err;
     }
 
+    // Logs the user out, and clears the default user.
     public void logOut(Context ctx) {
         mLoggedIn = false;
         mUserData = null;
@@ -116,7 +132,11 @@ public class LoginController {
         }
     }
 
+    // Attempts to updates the users password after validation. Returns null on success, or an
+    // appropriate error String on failure.
     public String updatePassword(Context ctx, String oldPass, String newPass) {
+        if(!mLoggedIn) { return "Invalid login state detected."; }
+
         if(oldPass == null || newPass == null) {
             return "Update password attempted with null parameters.";
         }
@@ -131,7 +151,11 @@ public class LoginController {
         return mUserData.updatePassword(ctx, oldPass, newPass);
     }
 
+    // Attempts to updates the users profile after validation. Returns null on success, or an
+    // appropriate error String on failure.
     public String updateProfile(Context ctx, String name, String pass, String email, String phone, String age) {
+        if(!mLoggedIn) { return "Invalid login state detected."; }
+
         if(name == null || pass == null || email == null || phone == null || age == null) {
             return "Update Profile attempted with null parameters.";
         }
@@ -163,27 +187,29 @@ public class LoginController {
         return mUserData.updateProfile(ctx, name, pass, email, phone, age);
     }
 
-    // Just checking if its alpha numeric, as the more specific check was considered a hassle in HM2.
+    // Internal helper function to validate phone numbers.
+    // Note: Just checking if its alpha numeric, as the more specific check wasn't important in HM2.
     protected static boolean validatePhoneNumber(String phone) {
         if(phone.length() < MIN_PHONE_LENGTH ) { return false; }
         return TextUtils.isDigitsOnly(phone.replace(' ', '0').replace('-', '0'));
     }
 
-
+    // Below are getters for the users account information, they return the empty string if the
+    // user is not logged in. Double checked for faulty state protection.
     public String getUsername() {
-        if(mUserData == null) return "";
+        if(mUserData == null || !mLoggedIn) return "";
         return mUserData.getUsername();
     }
     public String getEmail() {
-        if(mUserData == null) return "";
+        if(mUserData == null || !mLoggedIn) return "";
         return mUserData.getEmail();
     }
     public String getPhone() {
-        if(mUserData == null) return "";
+        if(mUserData == null || !mLoggedIn) return "";
         return mUserData.getPhone();
     }
     public int getAge() {
-        if(mUserData == null) return -1;
+        if(mUserData == null || !mLoggedIn) return -1;
         return mUserData.getAge();
     }
 }

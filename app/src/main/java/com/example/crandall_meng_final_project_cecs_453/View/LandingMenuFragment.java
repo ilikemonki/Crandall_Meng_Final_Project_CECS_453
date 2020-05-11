@@ -8,7 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.crandall_meng_final_project_cecs_453.R;
 
-
+/*
+    Menu fragment displayed in the Settings option. Begins the core of the application after
+    account book keeping.
+ */
 public class LandingMenuFragment extends Fragment {
 
     @Override

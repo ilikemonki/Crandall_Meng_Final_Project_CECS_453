@@ -6,6 +6,9 @@ import android.os.Bundle;
 
 import com.example.crandall_meng_final_project_cecs_453.R;
 
+/*
+    Displays the about page.
+ */
 public class AboutActivity extends AppCompatActivity {
 
     @Override

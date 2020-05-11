@@ -11,6 +11,9 @@ import android.widget.Toast;
 import com.example.crandall_meng_final_project_cecs_453.Controller.LoginController;
 import com.example.crandall_meng_final_project_cecs_453.R;
 
+/*
+    Signup Activity, displays the controls required to attempt to create a new user account.
+ */
 public class SignupActivity extends AppCompatActivity {
     protected LoginController mController;
     protected EditText mUsername, mPassword, mRetypePassword, mEmail, mPhone, mAge;

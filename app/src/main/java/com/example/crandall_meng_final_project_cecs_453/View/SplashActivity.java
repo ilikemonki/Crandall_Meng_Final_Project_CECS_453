@@ -9,6 +9,10 @@ import android.os.Handler;
 import com.example.crandall_meng_final_project_cecs_453.Controller.LoginController;
 import com.example.crandall_meng_final_project_cecs_453.R;
 
+/*
+    Splash screen, also checks for a default login. If a default login is found transitions to
+    the Landing activity, otherwise transitions to the login page.
+ */
 public class SplashActivity extends AppCompatActivity {
     protected LoginController mController;
     protected int mTimeoutMiliseconds;

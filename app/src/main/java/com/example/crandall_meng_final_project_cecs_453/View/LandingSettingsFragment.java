@@ -12,6 +12,10 @@ import android.widget.Button;
 import com.example.crandall_meng_final_project_cecs_453.Controller.LoginController;
 import com.example.crandall_meng_final_project_cecs_453.R;
 
+/*
+    Settings fragment. Has various options for account management, About / Help pages, and has a
+    logout button.
+ */
 public class LandingSettingsFragment extends Fragment {
     protected ViewGroup mView;
 
