@@ -13,22 +13,7 @@ import com.example.crandall_meng_final_project_cecs_453.R;
 
 import com.example.crandall_meng_final_project_cecs_453.Controller.LoginController;
 
-/*
-    Concerns:
-        "some fields require a default value" -- are hints okay ?
-
-        use android resource strings for all error messages in controller / Model ?
-        using scroll bars of neccesary for signup page ?
-        comment code ?
-
-        Check phone number validity carefully ?
-
-        worry about synchronizing access to Database ?
-
-        customize page transition animation ?
-
-        add volume to settings ?
- */
+// Login Page. Checks whether a user has an account. Send user to Sign-up page or main page.
 public class LoginActivity extends AppCompatActivity {
     protected LoginController mController;
     protected EditText mUsername, mPassword;
@@ -47,14 +32,14 @@ public class LoginActivity extends AppCompatActivity {
         mLoginButton = findViewById(R.id.login_button);
         mRememberMe = findViewById(R.id.remember_checkbox);
 
-
-        //FOR DEBUGGING PURPOSES ONLY, DELETE FROM HERE
+        /*
+        //FOR DEBUGGING PURPOSES ONLY, DELETE FROM HERE ===>
         mController.attemptSignup(this, "p", "pppppppp",
                 "pppppppp", "p@y.com", "1231231234", "30");
         mUsername.setText("p");
         mPassword.setText("pppppppp");
-        //TO HERE
-
+        //TO HERE <===
+         */
 
         mSignupButton.setOnClickListener((view) -> {
             startActivity(new Intent(this, SignupActivity.class));
@@ -73,10 +58,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
-
-
-
 }

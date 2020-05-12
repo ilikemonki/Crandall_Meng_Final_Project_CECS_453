@@ -60,6 +60,7 @@ public class ImageToTextController {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         MediaStore.Images.Media.insertImage(ittModel.getAppContext().getContentResolver(), bitmap, "Title", null);
+        Toast.makeText(ittModel.getAppContext(), "Image is saved.", Toast.LENGTH_SHORT).show();
     }
 
     //Crops the image that is passed in the parameter
