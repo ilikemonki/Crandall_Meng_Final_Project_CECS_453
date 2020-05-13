@@ -54,6 +54,7 @@ public class MainOcrFragment extends Fragment {
         mOcrButton = rootView.findViewById(R.id.btn_ocrCamera);
         mSaveImageButton = rootView.findViewById(R.id.btn_saveImage);
 
+
         //Get Image from Ocr Camera Fragment
         if (getArguments() != null) {
             ittController.setResultUri(getArguments().getParcelable("OcrCameraImage"));
@@ -67,6 +68,9 @@ public class MainOcrFragment extends Fragment {
         mImageView.setOnClickListener((view) -> {
             if (ittController.getResultUri() != null) {
                 ittController.startCropImage(ittController.getResultUri());
+            }
+            else {
+                Toast.makeText(getContext(), "Please choose an image.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -97,7 +101,6 @@ public class MainOcrFragment extends Fragment {
             fragmentTransaction.replace(R.id.landing_menu_container, fragment2);
             fragmentTransaction.addToBackStack(MainOcrFragment.class.getName());
             fragmentTransaction.commit();
-
         });
 
         //Back button Listener
@@ -156,6 +159,9 @@ public class MainOcrFragment extends Fragment {
     }
     //Set the ImageView mImageView
     private void setmImageView(Uri imageUri) {
+        if (mImageView.getBackground() != null) {
+            mImageView.setBackground(null);
+        }
         mImageView.setImageURI(imageUri);
     }
 
