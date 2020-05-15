@@ -2,11 +2,11 @@
 
 CECS453\
 Mobile Application Development\
-Final Project\
+Final Project
 
 Authors: Josue Crandall and Meng Cha\
 CECS 453 Mobile Apps\
-Date: 5/15/20\
+Date: 5/15/20
 
 Title: Image Reader
 
