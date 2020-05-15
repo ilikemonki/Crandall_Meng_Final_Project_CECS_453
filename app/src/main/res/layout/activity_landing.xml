@@ -9,6 +9,7 @@
     tools:context=".View.LandingActivity">
 
     <com.google.android.material.tabs.TabLayout
+        app:tabTextAppearance="@style/lower_case_titles"
         android:id="@+id/landing_tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
