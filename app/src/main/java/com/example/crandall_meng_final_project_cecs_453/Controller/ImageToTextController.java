@@ -125,4 +125,8 @@ public class ImageToTextController {
     public void setResultUri(Uri resultUri) {
         ittModel.setResultUri(resultUri);
     }
+
+    public int getRequestCameraPermissionID() {
+        return ittModel.getRequestCameraPermissionID();
+    }
 }

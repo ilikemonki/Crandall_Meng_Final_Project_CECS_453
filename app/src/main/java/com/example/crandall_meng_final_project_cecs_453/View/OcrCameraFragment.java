@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -79,9 +80,8 @@ public class OcrCameraFragment extends Fragment {
             @Override
             public void surfaceCreated(SurfaceHolder surfaceHolder) {
                 try {
-                    if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(getActivity(),
-                                new String[]{Manifest.permission.CAMERA},
+                    if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions(new String[]{Manifest.permission.CAMERA},
                                 cameraController.getRequestCameraPermissionID());
                         return;
                     }
@@ -135,18 +135,17 @@ public class OcrCameraFragment extends Fragment {
 
     //Get permission to write to external storage
     public void getWriteToExternalPermission() {
-        if (ActivityCompat.checkSelfPermission(getContext(),
+        if (ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
 
             // Permission is not granted
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            if (shouldShowRequestPermissionRationale( Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 Toast.makeText(getContext(), "Write to External Storage Denied", Toast.LENGTH_SHORT).show();
             } else {
                 //Request the permission
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, cameraController.getRequestCameraPermissionID());
+                requestPermissions( new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        cameraController.getRequestCameraPermissionID());
             }
         }
     }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Final Project</string>
+    <string name="app_name">Image Reader</string>
     <string name="name_field_text">Username</string>
     <string name="password_field_text">Password</string>
     <string name="retype_password_field_text">Retype Password</string>

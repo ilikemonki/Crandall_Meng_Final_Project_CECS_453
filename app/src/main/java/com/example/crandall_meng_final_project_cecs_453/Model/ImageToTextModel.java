@@ -15,6 +15,7 @@ public class ImageToTextModel {
     private Uri resultUri;
     private Context appContext;
     private Fragment appFragment;
+    final private int RequestCameraPermissionID = 1001;
 
     // Constructor
     public ImageToTextModel(final Context ctx, final Fragment fragment) {
@@ -55,4 +56,7 @@ public class ImageToTextModel {
         this.resultUri = resultUri;
     }
 
+    public int getRequestCameraPermissionID() {
+        return RequestCameraPermissionID;
+    }
 }
