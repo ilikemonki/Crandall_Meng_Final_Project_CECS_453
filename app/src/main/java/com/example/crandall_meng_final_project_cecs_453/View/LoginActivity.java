@@ -1,3 +1,9 @@
+/*
+Meng Cha and Josue Crandall
+CECS 453 Mobile Apps
+5/15/2020
+*/
+
 package com.example.crandall_meng_final_project_cecs_453.View;
 
 import androidx.appcompat.app.AppCompatActivity;
